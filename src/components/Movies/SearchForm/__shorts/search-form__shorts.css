@@ -1,0 +1,22 @@
+.search-form__shorts {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 0 0 30px;
+  border-left: 1px #CBCBCB solid;
+  height: 40px;
+  margin: 0 0 0 19px;
+}
+
+@media screen and (max-width: 700px) {
+  .search-form__shorts  {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    border-left: none;
+    top: calc(72px + 40px);
+    left: 0;
+    right: 0;
+    justify-content: center;
+  }
+}

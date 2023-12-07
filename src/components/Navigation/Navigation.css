@@ -1,0 +1,18 @@
+@import url(./__link/navigation__link.css);
+@import url(./__profile-logo/navigation__profile-logo.css);
+@import url(./__profile/navigation__profile.css);
+@import url(./__profile-logo/_dark/navigation__profile-logo_dark.css);
+@import url(./__profile-logo/_light/navigation__profile-logo_light.css);
+@import url(./__link/_active/navigation__link_active.css);
+@import url(./__link/_inactive/navigation__link_inactive.css);
+@import url(./__popup-container/navigation__popup-container.css);
+@import url(./__bttn/navigation__bttn.css);
+@import url(./__popup/navigation__popup.css);
+@import url(./__close/navigation__close.css);
+@import url(./__popup/_opened/navigation__popup_opened.css);
+@import url(./__container/navigation__container.css);
+
+.navigation {
+  display: flex;
+  align-items: center;
+}

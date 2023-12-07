@@ -1,0 +1,14 @@
+.movie-card__info {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0 0;
+  
+}
+
+@media screen and (max-width: 600px) {
+  .movie-card__info  {
+    font-size: 12px;
+    line-height: 15px;
+    padding: 0 18px 0 14px;
+  }
+}

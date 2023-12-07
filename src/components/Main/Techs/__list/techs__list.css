@@ -1,0 +1,29 @@
+.techs__list {
+  margin: 100px auto 0; 
+  text-decoration: none;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .techs__list {
+    margin: 83px auto 0; 
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .techs__list {
+    width: 280px;
+    flex-wrap: wrap;
+  }
+} 
+
+@media screen and (max-width: 600px) {
+  .techs__list {
+    margin: 50px auto 0;
+    width: 178px;
+    flex-wrap: wrap;
+  }
+} 

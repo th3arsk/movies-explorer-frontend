@@ -1,0 +1,29 @@
+.navigation__link {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: right;
+  padding: 0;
+  text-decoration: none;
+  margin: 0 0 0 20px;
+  transition: .1s ease-in;
+  color: black;
+}
+
+.navigation__link:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 800px) {
+  .navigation__link  {
+    margin: 0 0 28px;
+    text-align: center;
+  }
+} 
+
+@media screen and (max-width: 600px) {
+  .navigation__link  {
+    margin: 0 0 24px;
+    text-align: center;
+  }
+} 

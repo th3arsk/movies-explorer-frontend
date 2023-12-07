@@ -1,0 +1,28 @@
+@import url(./__more/movie-list__more.css);
+@import url(./__container/movie-list__container.css);
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 80px auto 28px;
+  row-gap: 60px;
+  column-gap: 30px;
+  padding: 70px 0 0 70px;
+  border-top: 1px #E8E8E8 solid;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 900px) {
+  .movie-list  {
+    margin: 120px auto 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .movie-list  {
+    margin: 120 auto 0;
+  }
+}
+
+

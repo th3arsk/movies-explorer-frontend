@@ -1,0 +1,10 @@
+.portfolio__link {
+  text-align: left;
+  text-decoration: none; 
+  transition: .1s ease-in;
+  color: black
+}
+
+.portfolio__link:hover {
+  opacity: .7;
+}

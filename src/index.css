@@ -1,0 +1,9 @@
+@import url(./vendor/normilize.css);
+@import url(./vendor/fonts/fonts.css);
+
+
+*{
+   
+    box-sizing: border-box;
+
+}

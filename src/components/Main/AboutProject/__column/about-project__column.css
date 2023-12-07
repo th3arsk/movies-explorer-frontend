@@ -1,0 +1,33 @@
+.about-project__column {
+  width: 550px;
+}
+
+@media screen and (max-width: 1250px) {
+  .about-project__column {
+    width: 48%; 
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .about-project__column {
+    width: 319px; 
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .about-project__column {
+    width: 48%; 
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .about-project__column {
+    width: 48%; 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-project__column {
+    width: 100%; 
+  }
+}

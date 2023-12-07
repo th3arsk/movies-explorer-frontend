@@ -1,0 +1,15 @@
+.about-me__image {
+  width: 270px;
+  height: 327px;
+  border-radius: 10px; 
+  background-image: url(../../../../images/author.jpg);
+}
+
+@media screen and (max-width: 600px) {
+  .about-me__image  {
+    margin: 0 auto;
+    width: 292px;
+    height: 352px;
+    background-size: cover;
+  }
+} 

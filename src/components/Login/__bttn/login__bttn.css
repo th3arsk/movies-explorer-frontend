@@ -1,0 +1,25 @@
+.login__bttn {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border-radius: 3px;  
+  height: 45px;
+  margin: 159px 0 16px;
+  transition: .15s ease-in;
+}
+ 
+.login__bttn:hover {
+    opacity: .8;
+}
+
+@media screen and (max-width: 600px) {
+  .login__bttn {
+    margin: 247px 0 14px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+}

@@ -1,0 +1,30 @@
+.error__back {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 0 auto 60px; 
+  padding: 0;
+  color: black;
+  text-decoration: none;
+  transition: .1s ease-in;
+}
+
+.error__back:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 800px) {
+  .error__back {
+    margin: 0 auto 222px; 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .error__back {
+    margin: 0 auto 30px;
+    line-height: 15px;
+    font-size: 12px;
+  }
+}

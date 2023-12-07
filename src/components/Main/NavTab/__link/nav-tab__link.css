@@ -1,0 +1,8 @@
+.nav-tab__link {
+  color: white;
+  transition: .1s ease-in;
+}
+
+.nav-tab__link:hover {
+  opacity: .7;
+}
