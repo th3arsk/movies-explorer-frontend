@@ -13,6 +13,12 @@
 
 @media screen and (max-width: 800px) {
   .navigation__profile  {
-    margin: 0 auto;
+    margin: 0 auto 92px;
   }
 } 
+
+@media screen and (max-width: 600px) {
+  .navigation__profile  {
+    margin: 0 auto 48px;
+  }
+}

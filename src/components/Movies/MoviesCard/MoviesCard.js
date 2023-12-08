@@ -5,7 +5,7 @@ function MoviesCard(props) {
   const [ saved, setSaved ] = React.useState(false);
 
   return (
-    <div className="movie-card">{
+    <li className="movie-card">{
         saved ? 
         <svg className="movie-card__saved-logo" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="21" height="21" rx="10.5" fill="#FF4062"/>
@@ -24,7 +24,7 @@ function MoviesCard(props) {
         <h2 className="movie-card__name">{props.name}</h2>
         <p className="movie-card__duration">{props.duration}</p>
       </div>
-    </div>
+    </li>
   );
 }
 

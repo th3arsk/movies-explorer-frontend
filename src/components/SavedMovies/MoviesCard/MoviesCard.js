@@ -2,7 +2,7 @@ import './MoviesCard.css';
 
 function MoviesCard(props) {
   return (
-    <div className="movie-card">
+    <li className="movie-card">
       <button className="movie-card__close">
         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="21" height="21" rx="10.5" fill="#F9F9F9"/>
@@ -14,7 +14,7 @@ function MoviesCard(props) {
         <h2 className="movie-card__name">{props.name}</h2>
         <p className="movie-card__duration">{props.duration}</p>
       </div>
-    </div>
+    </li>
   );
 }
 

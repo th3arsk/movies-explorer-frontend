@@ -1,7 +1,7 @@
 .navigation__popup_opened {
   display: flex;
   flex-direction: column;
-  padding: 159px 70px 92px;
+  padding: 0;
   justify-content: space-between;
 }
 
@@ -17,10 +17,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .navigation__popup_opened {
-    padding: 144px 30px 48px;
-  }
-
   .navigation__popup_opened::before {
     position: none;
     width: 0;

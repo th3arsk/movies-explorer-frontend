@@ -1,22 +1,27 @@
-@import url(./__container/movie-list__container.css);
-
 .movie-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 80px 0 28px;
+  margin: 80px auto 28px;
   row-gap: 60px;
   column-gap: 30px;
-  padding: 70px 0 0 70px;
+  padding: 70px 0 0 0;
   border-top: 1px #E8E8E8 solid;
   min-height: 540px;
-  width: 100%;
+  width: calc(100% - 140px);
   justify-content: flex-start;
   list-style: none;
 }
 
+@media screen and (max-width: 1200px) {
+  .movie-list  {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   .movie-list  {
-    padding: 70px 0 0 30px;
+    padding: 70px 0 0 0;
     row-gap: 47px;
     margin: 120px auto 0;
     min-height: 700px;
@@ -27,7 +32,7 @@
 @media screen and (max-width: 600px) {
   .movie-list  {
     justify-content: center;
-    padding: 50px 10px 0;
+    padding: 50px 0 0;
     row-gap: 39px;
     margin: 110px auto 150px;
     min-height: max-content;

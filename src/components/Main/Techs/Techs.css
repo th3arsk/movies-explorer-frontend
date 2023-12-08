@@ -19,8 +19,10 @@
 
 @media screen and (max-width: 600px) {
   .techs {
-    width: 100vw;
-    padding: 70px 18px;
+    width: calc(100% - 28px);
+    padding: 70px 0;
+    margin: 0 auto;
+    display: flex;
     background-color: white;
   }
 }

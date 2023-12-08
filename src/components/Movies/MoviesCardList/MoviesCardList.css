@@ -1,22 +1,22 @@
 @import url(./__more/movie-list__more.css);
 @import url(./__container/movie-list__container.css);
 
-.movie-list {
+.movies__list {
   display: flex;
   flex-wrap: wrap;
-  margin: 80px 0 28px;
+  margin: 80px auto 28px;
   row-gap: 60px;
   column-gap: 30px;
-  padding: 70px 0 0 70px;
+  padding: 70px 0 0 0;
   border-top: 1px #E8E8E8 solid;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   list-style: none;
 }
 
 @media screen and (max-width: 1000px) {
-  .movie-list  {
-    padding: 70px 0 0 30px;
+  .movies__list  {
+    padding: 70px 0 0 0px;
     row-gap: 47px;
     margin: 120px auto 0;
     justify-content: center;
@@ -24,9 +24,9 @@
 }
 
 @media screen and (max-width: 600px) {
-  .movie-list  {
+  .movies__list  {
     justify-content: center;
-    padding: 50px 10px 0;
+    padding: 50px 0 0;
     row-gap: 39px;
     margin: 110px auto 0;
   }
