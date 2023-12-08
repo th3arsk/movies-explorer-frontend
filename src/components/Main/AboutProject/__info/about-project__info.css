@@ -1,0 +1,13 @@
+.about-project__info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px) {
+  .about-project__info {
+    flex-direction: column;
+    row-gap: 56px;
+  }
+}
+

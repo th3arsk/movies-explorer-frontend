@@ -1,0 +1,30 @@
+@import url(./__logo/register__logo.css);
+@import url(./__title/register__title.css);
+@import url(./__form/register__form.css);
+@import url(./__fieldset/register__fieldset.css);
+@import url(./__label/register__label.css);
+@import url(./__input/register__input.css);
+@import url(./__bttn/register__bttn.css);
+@import url(./__question/register__question.css);
+@import url(./__span/register__span.css);
+@import url(./__error/register__error.css);
+@import url(./__error/_active/register__error_active.css);
+@import url(./__input/_incorrect/register__input_incorrect.css);
+
+.register {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .register {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .register {
+    padding: 56px 0 30px;
+  }
+}

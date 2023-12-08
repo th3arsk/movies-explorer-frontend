@@ -1,0 +1,17 @@
+.header__nav {
+  align-items: center;
+  display: flex;
+  margin-right: 70px;
+}
+
+@media screen and (max-width: 900px) {
+  .header__nav {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header__nav {
+    margin-right: 14px;
+  }
+}

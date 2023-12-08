@@ -1,0 +1,6 @@
+.register__fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}

@@ -1,0 +1,18 @@
+.profile__row {
+  width: 410px;
+  margin: 0;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  .profile__row  {
+    width: 260px;
+  }
+}

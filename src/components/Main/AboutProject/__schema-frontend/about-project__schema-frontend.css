@@ -1,0 +1,9 @@
+.about-project__schema-frontend {
+  width: 80%;
+}
+
+@media screen and (max-width: 600px) {
+  .about-project__schema-frontend {
+    width: 65%;
+  }
+}

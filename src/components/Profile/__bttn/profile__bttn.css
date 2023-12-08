@@ -1,0 +1,11 @@
+.profile__bttn {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  transition: .1s ease-in;
+}
+
+.profile__bttn:hover {
+  opacity: .8;
+}

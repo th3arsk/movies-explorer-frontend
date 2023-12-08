@@ -1,0 +1,24 @@
+.navigation__profile {
+  display: flex;
+  margin: 0 0 0 50px;
+  gap: 13px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+  position: relative;
+}
+
+@media screen and (max-width: 800px) {
+  .navigation__profile  {
+    margin: 0 auto 92px;
+  }
+} 
+
+@media screen and (max-width: 600px) {
+  .navigation__profile  {
+    margin: 0 auto 48px;
+  }
+}

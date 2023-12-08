@@ -1,0 +1,14 @@
+.about-me__link {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  text-decoration: none;
+  transition: .1s ease-in;
+  color: black;
+}
+
+.about-me__link:hover {
+  opacity: .7;
+}

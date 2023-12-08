@@ -1,0 +1,31 @@
+.movie-card__close {
+  position: absolute;
+  transition: .1s ease-in;
+  display: none;
+  top: 14px;
+  right: 14px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: none;
+  border-radius: 10px;
+}
+
+.movie-card__close:hover {
+  opacity: .8;
+}
+
+
+@media screen and (max-width: 900px) {
+  .movie-card__close  {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .movie-card__close  {
+    display: flex;
+    top: 10px;
+    right: 10px;
+  }
+}

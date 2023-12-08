@@ -1,0 +1,14 @@
+.register__logo {
+  text-decoration: none;
+  transition: .15s ease-in;
+}
+
+.register__logo:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 600px) {
+  .register__logo {
+    margin: 0 auto;
+  }
+}
