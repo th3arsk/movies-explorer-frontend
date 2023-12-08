@@ -39,9 +39,7 @@ function Profile() {
           :
           <>
             <button className="profile__edit profile__bttn" type="button" onClick={()=>{setEdit(true)}}>Редактировать</button>
-            <button className="profile__bttn" type="button">
-              <Link className="profile__sign-out" to="/">Выйти из аккаунта</Link>
-            </button> 
+            <Link className="profile__sign-out" to="/">Выйти из аккаунта</Link>
           </>
         }  
       </div>

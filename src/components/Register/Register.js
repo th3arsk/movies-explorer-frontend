@@ -12,18 +12,18 @@ function Register() {
         </Link>
         <h1 className="register__title">Добро пожаловать!</h1>
         <fieldset className="register__fieldset">
-          <label className="register__label" for="name">Имя
-            <input className="register__input" name="name" />
-            <p className="register__error">Что-то пошло не так...</p>
-          </label>
-          <label className="register__label" for="email">E-mail
-            <input className="register__input" name="email" />
-            <p className="register__error">Что-то пошло не так...</p>
-          </label>
-          <label className="register__label" for="password">Пароль
-            <input className="register__input register__input_incorrect" name="password" type="password"/>
-            <p className="register__error register__error_active">Что-то пошло не так...</p>
-          </label>
+          <div className="register__label">Имя
+            <input className="register__input" name="name" id="name" />
+            <label className="register__error" for="name">Что-то пошло не так...</label>
+          </div>
+          <div className="register__label">E-mail
+            <input className="register__input" name="email" id="email" />
+            <label className="register__error" for="email">Что-то пошло не так...</label>
+          </div>
+          <div className="register__label">Пароль
+            <input className="register__input register__input_incorrect" name="password" id="password" type="password"/>
+            <label className="register__error register__error_active" for="password">Что-то пошло не так...</label>
+          </div>
           <button className="register__bttn" type="submit">Зарегистрироваться</button>
           <p className="register__question">Уже зарегистрированы?
            <Link className="register__span" to="/signin"> Войти</Link>

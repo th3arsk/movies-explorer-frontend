@@ -12,14 +12,14 @@ function Login() {
         </Link>
         <h1 className="login__title">Рады видеть!</h1>
         <fieldset className="login__fieldset">
-          <label className="login__label" for="email">E-mail
-            <input className="login__input login__input_incorrect" name="email" />
-            <p className="login__error login__error_active">Что-то пошло не так...</p>
-          </label>
-          <label className="login__label" for="password">Пароль
-            <input className="login__input" name="password" type="password"/>
-            <p className="login__error">Что-то пошло не так...</p>
-          </label>
+          <div className="login__label">E-mail
+            <input className="login__input login__input_incorrect" name="email" id="email"/>
+            <label className="login__error login__error_active" for="email">Что-то пошло не так...</label>
+          </div>
+          <div className="login__label">Пароль
+            <input className="login__input" name="password" id="password" type="password"/>
+            <label className="login__error" for="password">Что-то пошло не так...</label>
+          </div>
           <button className="login__bttn" type="submit">Войти</button>
           <p className="login__question">Ещё не зарегистрированы? 
            <Link className="login__span" to="/signup"> Регистрация</Link>
