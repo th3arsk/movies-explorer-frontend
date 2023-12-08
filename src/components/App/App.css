@@ -1,7 +1,7 @@
 .App {
   width: 100%;
   margin: auto;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Sans-serif';
   position: relative;
   justify-items: center;
   display: flex;

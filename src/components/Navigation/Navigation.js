@@ -27,7 +27,7 @@ function Navigation(props) {
         </Link>  
       </div>
       <div className="navigation__popup-container">
-        <button className="navigation__bttn" onClick={()=>{setOpened(true)}}>
+        <button className="navigation__bttn" onClick={()=>{setOpened(true)}} type="button">
           <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M36 14L8 14V11L36 11V14Z" fill="black"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M36 24L8 24V21L36 21V24Z" fill="black"/>
@@ -35,15 +35,17 @@ function Navigation(props) {
           </svg>
         </button>
         <div className={`navigation__popup ${ opened ? "navigation__popup_opened" : "" }`}>
-          <button className="navigation__close navigation__bttn" onClick={()=>{setOpened(false)}}>
+          <button className="navigation__close navigation__bttn" onClick={()=>{setOpened(false)}} type="button">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="7.16064" y="9.28247" width="3" height="22" transform="rotate(-45 7.16064 9.28247)" fill="black"/>
             <rect x="22.7173" y="7.16113" width="3" height="22" transform="rotate(45 22.7173 7.16113)" fill="black"/>
            </svg>
           </button>
-          <Link className={`navigation__link ${ props.mainOpened ? "navigation__link_active" : "navigation__link_inactive"}`} to="/">Главная</Link>
-          <Link className={`navigation__link ${ props.moviesOpened ? "navigation__link_active" : "navigation__link_inactive"}`} to="/movies">Фильмы</Link>
-          <Link className={`navigation__link ${ props.savedMoviesOpened ? "navigation__link_active" : "navigation__link_inactive"}`} to="/saved-movies">Сохранённые фильмы</Link>
+            <div className="navigation__links">
+              <Link className={`navigation__link ${ props.mainOpened ? "navigation__link_active" : "navigation__link_inactive"}`} to="/">Главная</Link>
+              <Link className={`navigation__link ${ props.moviesOpened ? "navigation__link_active" : "navigation__link_inactive"}`} to="/movies">Фильмы</Link>
+              <Link className={`navigation__link ${ props.savedMoviesOpened ? "navigation__link_active" : "navigation__link_inactive"}`} to="/saved-movies">Сохранённые фильмы</Link>
+            </div>
           <Link className="navigation__profile navigation__link" to="/profile">
           <p className="">Аккаунт</p>
           <div className="navigation__profile-logo navigation__profile-logo_light">
@@ -54,7 +56,6 @@ function Navigation(props) {
         </Link>  
         </div>
       </div>
-      
     </section>
   );
 }

@@ -1,0 +1,35 @@
+.profile__save {
+  border: none;
+  background-color: black;
+  transition: .1s ease-in;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+  display: flex;
+  color: white;
+  height: 45px;
+  width: 410px;
+  border: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__save:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 800px) {
+  .profile__save  {
+    width: 396px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__save  {
+    font-size: 12px;
+    line-height: 15px;
+    width: 260px;
+  }
+}

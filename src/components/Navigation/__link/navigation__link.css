@@ -16,14 +16,16 @@
 
 @media screen and (max-width: 800px) {
   .navigation__link  {
-    margin: 0 0 28px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
     text-align: center;
+    margin: 0 0 28px;
   }
 } 
 
 @media screen and (max-width: 600px) {
   .navigation__link  {
     margin: 0 0 24px;
-    text-align: center;
   }
 } 

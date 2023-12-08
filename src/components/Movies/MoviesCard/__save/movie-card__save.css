@@ -17,4 +17,9 @@
 .movie-card__save:hover .movie-card__save-logo{
   display:block;
 }
-  
+
+@media screen and (max-width: 600px) {
+  .movie-card__save  {
+    padding: 10px;
+  }
+}

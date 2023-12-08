@@ -11,6 +11,7 @@
 @import url(./__close/navigation__close.css);
 @import url(./__popup/_opened/navigation__popup_opened.css);
 @import url(./__container/navigation__container.css);
+@import url(./__links/navigation__links.css);
 
 .navigation {
   display: flex;

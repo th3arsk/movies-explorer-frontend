@@ -12,6 +12,7 @@
 @media screen and (max-width: 900px) {
   .about-project__paragraph {
     font-size: 12px;
+    line-height: 18px;
   }
 }
 

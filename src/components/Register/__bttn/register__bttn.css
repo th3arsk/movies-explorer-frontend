@@ -10,6 +10,7 @@
   height: 45px;
   margin: 71px 0 16px;
   transition: .15s ease-in;
+  border: none;
 }
 
 .register__bttn:hover {

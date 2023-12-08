@@ -22,11 +22,12 @@
 @media screen and (max-width: 900px) {
   .search-form  {
     margin: 80px 30px 0;
+    padding: 0 20px 0 19px;
   }
 }
 
 @media screen and (max-width: 700px) {
   .search-form  {
-    margin: 70px 10px 0;
+    margin: 80px 10px 0;
   }
 }

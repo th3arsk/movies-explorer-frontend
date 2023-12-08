@@ -4,8 +4,9 @@
   line-height: 22px;
   letter-spacing: 0px;
   text-align: left;
+  text-align: left;
   padding: 0;  
-  margin: 0 0 99px;
+  margin: 0 0 96px;
   width: 600px;
 }
 
@@ -14,7 +15,7 @@
     width: 100%;
     font-size: 12px;
     line-height: 18px;
-    margin: 0 0 87px;
+    margin: 0 0 84px;
   }
 } 
 
@@ -23,7 +24,7 @@
     width: 100%;
     font-size: 11px;
     line-height: 16px;
-    margin: 0 0 40px;
+    margin: 0 0 36px;
   }
 } 
 

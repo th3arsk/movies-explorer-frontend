@@ -4,25 +4,30 @@
 .movie-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 80px auto 28px;
+  margin: 80px 0 28px;
   row-gap: 60px;
   column-gap: 30px;
   padding: 70px 0 0 70px;
   border-top: 1px #E8E8E8 solid;
   width: 100%;
   justify-content: flex-start;
+  list-style: none;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   .movie-list  {
+    padding: 70px 0 0 30px;
+    row-gap: 47px;
     margin: 120px auto 0;
+    justify-content: center;
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .movie-list  {
-    margin: 120 auto 0;
+    justify-content: center;
+    padding: 50px 10px 0;
+    row-gap: 39px;
+    margin: 110px auto 0;
   }
 }
-
-

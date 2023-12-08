@@ -13,9 +13,9 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 750px) {
   .techs__list {
-    width: 280px;
+    width: 380px;
     flex-wrap: wrap;
   }
 } 

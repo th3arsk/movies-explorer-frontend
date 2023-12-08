@@ -3,3 +3,10 @@
   top: 14px;
   right: 14px;
 }
+
+@media screen and (max-width: 600px) {
+  .movie-card__saved-logo  {
+    top: 10px;
+    right: 10px;
+  }
+}

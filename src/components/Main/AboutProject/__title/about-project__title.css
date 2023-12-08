@@ -6,7 +6,13 @@
   text-align: left;
   border-bottom: 1px solid black;
   padding-bottom: 23px;
-  margin: 90px 0 70px;   
+  margin: 110px 0 70px;   
+}
+
+@media screen and (max-width: 900px) {
+  .about-project__title {
+    margin: 90px 0 70px;
+  }
 }
 
 @media screen and (max-width: 600px) {

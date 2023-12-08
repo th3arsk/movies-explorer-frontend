@@ -19,6 +19,7 @@
 
 @media screen and (max-width: 600px) {
   .techs {
+    width: 100vw;
     padding: 70px 18px;
     background-color: white;
   }

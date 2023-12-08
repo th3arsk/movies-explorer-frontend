@@ -1,12 +1,14 @@
 .navigation__close {
   position: absolute;
+  padding: 0;
+  margin: 0;
   top: 22px;
   right: 22px;
 }
 
 @media screen and (max-width: 600px) {
   .navigation__close  {
-    top: 11px;
-    right: 11px;
+    top: 13px;
+    right: 13px;
   }
 }

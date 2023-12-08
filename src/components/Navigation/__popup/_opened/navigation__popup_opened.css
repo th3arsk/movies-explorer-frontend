@@ -1,7 +1,28 @@
 .navigation__popup_opened {
   display: flex;
   flex-direction: column;
-  padding: 159px 90px;
+  padding: 159px 70px 92px;
+  justify-content: space-between;
 }
 
+.navigation__popup_opened::before {
+  position: fixed;
+  background-color: black;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 32.3%;
+  content: '';
+  opacity: .3;
+}
 
+@media screen and (max-width: 600px) {
+  .navigation__popup_opened {
+    padding: 144px 30px 48px;
+  }
+
+  .navigation__popup_opened::before {
+    position: none;
+    width: 0;
+  }
+}

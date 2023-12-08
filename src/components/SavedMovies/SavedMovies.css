@@ -1,6 +1,6 @@
 .saved-movies {
   margin: 0;
-  padding: 70px 70px 0;
+  padding: 0;
   position: relative;
   z-index: 1;
 }

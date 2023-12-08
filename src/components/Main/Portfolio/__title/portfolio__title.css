@@ -10,7 +10,8 @@
 }
 
 @media screen and (max-width: 600px) {
-  .portfolio__title  {
+  .portfolio__title {
+    font-size: 14px;
     margin: 0 0 20px;
   }
 } 
