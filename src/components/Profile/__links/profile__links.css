@@ -7,14 +7,20 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin: 0 auto;
+  margin: 204px auto 0;
 }
 
+@media screen and (max-width: 800px) {
+  .profile__links  {
+    margin: 194px auto 0;
+  }
+}
 
 @media screen and (max-width: 600px) {
   .profile__links  {
     font-size: 12px;
     line-height: 15px;
+    margin: 363px auto 0;
   }
 }
 

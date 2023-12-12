@@ -10,6 +10,7 @@
 @import url(./__error/login__error.css);
 @import url(./__error/_active/login__error_active.css);
 @import url(./__input/_incorrect/login__input_incorrect.css);
+@import url(./__bttn/_disabled/login__bttn_disabled.css);
 
 .login {
   display: flex;

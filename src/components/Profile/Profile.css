@@ -10,6 +10,10 @@
 @import url(./__fieldset/profile__fieldset.css);
 @import url(./__input/profile__input.css);
 @import url(./__save/profile__save.css);
+@import url(./__input/_incorrect/profile__input_incorrect.css);
+@import url(./__error/profile__error.css);
+@import url(./__error/_active/profile__error_active.css);
+@import url(./__save/_disabled/profile__save_disabled.css);
 
 .profile {
   display: flex;

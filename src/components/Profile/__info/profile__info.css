@@ -1,15 +1,15 @@
 .profile__info {
-  margin: 107px auto 204px;
+  margin: 107px auto 0;
 }
 
 @media screen and (max-width: 800px) {
   .profile__info  {
-    margin: 80px auto 194px;
+    margin: 80px auto 0;
   }
 } 
 
 @media screen and (max-width: 600px) {
   .profile__info  {
-    margin: 64px auto 363px;
+    margin: 64px auto 0;
   }
 }

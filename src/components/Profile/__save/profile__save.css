@@ -14,6 +14,8 @@
   border: 3px;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  margin: 204px 0 0;
 }
 
 .profile__save:hover {
@@ -23,6 +25,7 @@
 @media screen and (max-width: 800px) {
   .profile__save  {
     width: 396px;
+    margin: 194px auto 0;
   }
 }
 
@@ -31,5 +34,6 @@
     font-size: 12px;
     line-height: 15px;
     width: 260px;
+    margin: 363px auto 0;
   }
 }

@@ -1,45 +1,88 @@
 import './Profile.css';
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { useInput } from '../../utils/Validation';
 
-function Profile() {
+function Profile(props) {
   const [ edit, setEdit ] = React.useState(false);
+
+  const nameRef = React.useRef();
+  const emailRef = React.useRef();
+  
+  function handleSubmit(e) {
+    e.preventDefault();
+  
+    const user = {
+      name: nameRef.current.value === "" ? props.name : nameRef.current.value ,
+      email: emailRef.current.value === "" ? props.email : emailRef.current.value
+    }
+    
+    setEdit(false);
+    props.onEdit(user.name, user.email)
+  }
+
+  const name = useInput( "", { minLength: 2 } );
+  const email = useInput( "", { isEmail: true } );
+
   return (
     <main className="profile">
-      <h1 className="profile__greeting">Привет, Виталий!</h1>
+      <h1 className="profile__greeting">{`Привет, ${props.name}!`}</h1>
       { edit ?
-        <form className="profile__info">
+        <form className="profile__info" onSubmit={handleSubmit}>
           <fieldset className="profile__fieldset">
             <div className="profile__row profile__name">
               <p className="profile__data">Имя</p>
-              <input className="profile__input" placeholder="Имя"/>
+              <input 
+                className={`profile__input ${(name.isDirty && name.minLength) ? "profile__input_incorrect" : " "}`}
+                ref={nameRef}
+                placeholder={props.name}
+                name="name"
+                type="text"
+                value={name.value}
+                onBlur={name.onBlur}
+                onChange={name.onChange}
+              />
+              <label className={`profile__error ${(name.isDirty && name.minLength) ? "profile__error_active" : " "}`} for="name">{name.message}</label> 
             </div>
             <div className="profile__row">
               <p className="profile__data">E-mail</p>
-              <input className="profile__input" placeholder="Почта"/>
-            </div>
-          </fieldset>
-          
+              <input 
+                className={`profile__input ${(email.isDirty && email.isEmail) ? "profile__input_incorrect" : " "}`}
+                ref={emailRef}
+                placeholder={props.email}
+                name="email"
+                type="email"
+                value={email.value}
+                onBlur={email.onBlur}
+                onChange={email.onChange}
+              />
+              <label className={`profile__error ${(email.isDirty && email.isEmail) ? "profile__error_active" : " "}`} for="email">{email.message}</label>
+            </div> 
+            <button 
+              className={`profile__save ${(false) ? "profile__save_disabled" : " "}`}
+              type="submit"
+              disabled={(false)}
+            >Сохранить</button>
+          </fieldset> 
         </form>
         :
         <div className="profile__info">
           <div className="profile__row profile__name">
             <p className="profile__data">Имя</p>
-            <p className="profile__data">Виталий</p>
+            <p className="profile__data">{props.name}</p>
           </div>
           <div className="profile__row">
             <p className="profile__data">E-mail</p>
-            <p className="profile__data">pochta@yandex.ru</p>
+            <p className="profile__data">{props.email}</p>
           </div>
         </div>
       }
       <div className="profile__links">
         { edit ?
-          <button className="profile__save" onClick={()=>{setEdit(false)}}>Сохранить</button>
+           ""
           :
           <>
             <button className="profile__edit profile__bttn" type="button" onClick={()=>{setEdit(true)}}>Редактировать</button>
-            <Link className="profile__sign-out" to="/">Выйти из аккаунта</Link>
+            <button className="profile__sign-out profile__bttn" onClick={props.onExit}>Выйти из аккаунта</button>
           </>
         }  
       </div>

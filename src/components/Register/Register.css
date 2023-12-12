@@ -10,6 +10,7 @@
 @import url(./__error/register__error.css);
 @import url(./__error/_active/register__error_active.css);
 @import url(./__input/_incorrect/register__input_incorrect.css);
+@import url(./__bttn/_disabled/register__bttn_disabled.css);
 
 .register {
   display: flex;
