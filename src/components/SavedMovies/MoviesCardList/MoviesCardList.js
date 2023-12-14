@@ -1,12 +1,36 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import slova_o_dizaine from '../../../images/slova_o_dizaine.jpg';
+import { getSavedMovies, deleteMovie, getJson } from '../../../utils/MoviesApi'
+import React from 'react';
+import Preloader from '../../Preloader/Preloader';
+
+import useFilter from '../../../utils/useFilter';
 
 function MoviesCardList() {
+  const [ movies, setMovies ] = React.useState([]);
+  const [ preloader, setPreloader ] = React.useState(true);
+  
+  React.useEffect(()=>{
+    getSavedMovies()
+      .then(setPreloader(true))
+      .then((res) => getJson(res))
+      .then((res) => {
+        setMovies(res);
+      })
+      .catch(err => console.log(`Ошибка.....: ${err}`))
+      .finally(setPreloader(false))
+  }, [])
+
   return (
     <ul className="movie-list">
-      <MoviesCard name="33 слова о дизайне" duration="1ч 17м" image={slova_o_dizaine} />
-      <MoviesCard name="Киноальманах «100 лет дизайна»" duration="1ч 17м" image={slova_o_dizaine} />
+      {
+        useFilter(movies).map((movie) => (
+          <MoviesCard movie={movie} onDelete={deleteMovie} key={movie.movieId} />
+        ))
+      }
+      <div className={`movie-list__preloader ${ preloader ? "movie-list__preloader_visible" : ""}`}>
+        <Preloader />
+      </div>
     </ul>  
   );
 }

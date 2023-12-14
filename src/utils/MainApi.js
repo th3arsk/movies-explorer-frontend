@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3003"
+const BASE_URL = "https://api.th3arsk.diploma.nomoredomainsmonster.ru"
    
 const getJson = (res) => {
   if (res.ok) {
@@ -41,7 +41,7 @@ export function signIn( email, password ) {
       "email": email
     })
   })
-  .then((res => res.json()))
+  .then(((res) => res.json()))
   .then((res) => {
     localStorage.setItem('jwt', res.token);
     return res
@@ -59,7 +59,7 @@ export function checkToken() {
       'Authorization': `Bearer ${token}`,
     }
   })
-  .then(res => getJson(res))
+  .then((res) => getJson(res))
 }
 
 const getHeader = () => {
@@ -75,7 +75,7 @@ export function getUserInfo() {
     method: 'GET',
     headers: getHeader()
   })
-  .then(res => getJson(res));
+  .then((res) => getJson(res));
 }
 
 export function editUserInfo(name, email) {
@@ -87,5 +87,5 @@ export function editUserInfo(name, email) {
       email: email
     })
   })
-  .then(res => getJson(res));
+  .then((res) => getJson(res));
  }

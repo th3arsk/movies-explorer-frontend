@@ -1,5 +1,7 @@
 @import url(./__more/movie-list__more.css);
 @import url(./__container/movie-list__container.css);
+@import url(./__preloader/movie__preloader.css);
+@import url(./__preloader/_visible/movie__preloader_visible.css);
 
 .movies__list {
   display: flex;

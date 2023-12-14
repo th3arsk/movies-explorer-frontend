@@ -4,6 +4,7 @@
   display: flex;
   border: none;
   background-color: transparent;
+  outline: none;
 }
 
 .search-form__shorts-bttn:hover {

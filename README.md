@@ -1,4 +1,12 @@
-# movie-explorer вёрстка
+# movie-explorer
+
+## домен
+
+https://th3arsk.diploma.nomoredomainsmonster.ru
+
+## поддомен
+
+https://api.th3arsk.diploma.nomoredomainsmonster.ru/
 
 ## макет
 

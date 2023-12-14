@@ -67,7 +67,7 @@ function Login(props) {
           <button 
             className={`login__bttn ${(!email.isValid || !password.isValid) ? "login__bttn_disabled" : " "} `}
             type="submit"
-            disabled={(!email.isValid || !password.isValid)}
+            disabled={false}
           >Войти</button>
           <p className="login__question">Ещё не зарегистрированы? 
            <Link className="login__span" to="/signup"> Регистрация</Link>

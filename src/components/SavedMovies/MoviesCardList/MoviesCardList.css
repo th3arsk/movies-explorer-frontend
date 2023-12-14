@@ -1,3 +1,6 @@
+@import url(./__preloader/_visible/movie-list__preloader_visible.css);
+@import url(./__preloader/movie-list__preloader.css);
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -7,15 +10,16 @@
   padding: 70px 0 0 0;
   border-top: 1px #E8E8E8 solid;
   min-height: 540px;
-  width: calc(100% - 140px);
+  width: calc(100% - 128px);
   justify-content: flex-start;
   list-style: none;
+  justify-content: flex-start;
 }
 
 @media screen and (max-width: 1200px) {
-  .movie-list  {
-    justify-content: center;
+  .movie-list  {  
     width: 100%;
+    justify-content: center;
   }
 }
 
