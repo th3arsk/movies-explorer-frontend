@@ -5,26 +5,17 @@ import React from 'react';
 import Preloader from '../../Preloader/Preloader';
 
 import useFilter from '../../../utils/useFilter';
+import { useStore } from 'react-admin';
 
 function MoviesCardList() {
-  const [ movies, setMovies ] = React.useState([]);
+  const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
   const [ preloader, setPreloader ] = React.useState(true);
   
-  React.useEffect(()=>{
-    getSavedMovies()
-      .then(setPreloader(true))
-      .then((res) => getJson(res))
-      .then((res) => {
-        setMovies(res);
-      })
-      .catch(err => console.log(`Ошибка.....: ${err}`))
-      .finally(setPreloader(false))
-  }, [])
 
   return (
     <ul className="movie-list">
       {
-        useFilter(movies).map((movie) => (
+        useFilter(savedMovies).map((movie) => (
           <MoviesCard movie={movie} onDelete={deleteMovie} key={movie.movieId} />
         ))
       }

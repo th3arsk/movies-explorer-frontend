@@ -1,39 +1,36 @@
 import './MoviesCard.css';
 import React from 'react';
-import { getSavedMovies, getJson } from '../../../utils/MoviesApi';
+import { useStore } from 'react-admin';
+import { deleteMovie } from '../../../utils/MoviesApi';
 
 function MoviesCard(props) {
-  const [ savedMovies, setSavedMovies ] = React.useState([]);
+  const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
   const hours = Math.floor(props.movie.duration / 60);
   const minutes = props.movie.duration % 60;
   const url = `https://api.nomoreparties.co` + props.movie.image.url;
 
-  const savedMoviesId = savedMovies.map(i => (i.movieId));
-  const savedMovie = savedMoviesId.includes(props.movie.id);
-
-  React.useEffect(()=>{
-    getSavedMovies()
-    .then((res) => getJson(res))
-    .then((res) => setSavedMovies(res))
-    .catch(err => console.log(`Ошибка.....: ${err}`))
-  }, [])
-
+  const sameMovie = savedMovies.find((movie) => movie.movieId === props.movie.id)
 
   function handleSave() {
     props.onSave(props.movie)
-    .then(
-      getSavedMovies()
-      .then((res) => getJson(res))
-      .then((res) => setSavedMovies(res)) 
-    ) 
+    .then(res => setSavedMovies(res))
     .catch(err => console.log(`Ошибка.....: ${err}`)) 
-  }
 
+    console.log(savedMovies)
+  }
+  
+
+  function handleDelete() {
+    const id = sameMovie._id;
+
+    deleteMovie(id)
+    .catch(err => console.log(`Ошибка.....: ${err}`))
+  }
  
   return (
     <li className="movie-card">{
-        savedMovie ? 
-        <button className="movie-card__saved-logo">
+        sameMovie ? 
+        <button className="movie-card__saved-logo" onClick={handleDelete}>
           <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="21" height="21" rx="10.5" fill="#FF4062"/>
             <path d="M6.5 10.35L9.31905 12.6L14.5 8.09998" stroke="white" stroke-width="1.3"/>

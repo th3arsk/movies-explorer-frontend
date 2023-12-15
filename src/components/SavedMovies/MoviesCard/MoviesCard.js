@@ -6,7 +6,6 @@ function MoviesCard(props) {
 
   function handleDelete(e) {
     props.onDelete(props.movie._id)
-    .then(e.target.closest(".movie-card").remove())
     .catch(err => console.log(`Ошибка.....: ${err}`));
   }
 

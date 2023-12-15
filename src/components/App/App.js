@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../../contexts/ProtectedRoute';
 import { signIn, signUp, checkToken, getUserInfo, editUserInfo } from '../../utils/MainApi';
+import { getSavedMovies, getJson } from '../../utils/MoviesApi'
 
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -16,10 +17,15 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Error from '../Error/Error';
 
+import { useStore } from 'react-admin';
+
 function App() {
   const [ currentUser, setCurrentUser ] = React.useState({ });
   const [ loggedIn, setLoggedIn ] = React.useState(false);
   const navigate = useNavigate();
+
+  const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
+  const [ preloader, setPreloader ] = React.useState(true);
 
   React.useEffect(() => { handleTokenCheck() }, []);
 
@@ -31,6 +37,17 @@ function App() {
       .catch(err => console.log(`Ошибка.....: ${err}`));
     }, 
   );
+
+  React.useEffect(()=>{
+    getSavedMovies()
+      .then(setPreloader(true))
+      .then((res) => getJson(res))
+      .then((res) => {
+        setSavedMovies(res);
+      })
+      .catch(err => console.log(`Ошибка.....: ${err}`))
+      .finally(setPreloader(false))
+  })
 
   function auth(name, email, password) {
     signUp(name, email, password )
