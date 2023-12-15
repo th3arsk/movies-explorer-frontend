@@ -7,7 +7,7 @@ https://th3arsk.diploma.nomoredomainsmonster.ru
 https://api.th3arsk.diploma.nomoredomainsmonster.ru/
 
 ## pull-request
-https://github.com/th3arsk/movies-explorer-frontend/compare/main...level-3
+[https://github.com/th3arsk/movies-explorer-frontend/compare/main...level-3](https://github.com/th3arsk/movies-explorer-frontend/pull/2)
 
 ## макет
 light-4
