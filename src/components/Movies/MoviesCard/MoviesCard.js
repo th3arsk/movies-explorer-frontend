@@ -8,7 +8,6 @@ function MoviesCard(props) {
   const hours = Math.floor(props.movie.duration / 60);
   const minutes = props.movie.duration % 60;
   const url = `https://api.nomoreparties.co` + props.movie.image.url;
-
   const findedMovie = savedMovies.find((movie) => movie.movieId === props.movie.id)
 
   function handleSave() {
@@ -16,15 +15,15 @@ function MoviesCard(props) {
     .catch(err => console.log(`Ошибка.....: ${err}`)) 
   }
   
-  function handleDelete() { 
+  function handleDelete() {
     const id = findedMovie._id
     deleteMovie(id)
     .catch(err => console.log(`Ошибка.....: ${err}`))
-  }
+  }   
  
   return (
     <li className="movie-card">{
-        findedMovie ? 
+      findedMovie ? 
         <button className="movie-card__saved-logo" onClick={handleDelete}>
           <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="21" height="21" rx="10.5" fill="#FF4062"/>

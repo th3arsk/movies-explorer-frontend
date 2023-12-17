@@ -20,8 +20,8 @@ function Profile(props) {
     props.onEdit(user.name, user.email)
   }
 
-  const name = useInput( props.name, { minLength: 2 } );
-  const email = useInput( props.email, { isEmail: true } );
+  const name = useInput( props.name, { minLength: 2, isSame: true } );
+  const email = useInput( props.email, { isEmail: true, isSame: true } );
 
   return (
     <main className="profile">
@@ -32,7 +32,7 @@ function Profile(props) {
             <div className="profile__row profile__name">
               <p className="profile__data">Имя</p>
               <input 
-                className={`profile__input ${(name.isDirty && name.minLength) ? "profile__input_incorrect" : " "}`}
+                className={`profile__input ${(name.isDirty && (name.minLength || name.isSame)) ? "profile__input_incorrect" : " "}`}
                 ref={nameRef}
                 placeholder="Имя"
                 name="name"
@@ -41,12 +41,12 @@ function Profile(props) {
                 onBlur={name.onBlur}
                 onChange={name.onChange}
               />
-              <label className={`profile__error ${(name.isDirty && name.minLength) ? "profile__error_active" : " "}`} for="name">{name.message}</label> 
+              <label className={`profile__error ${(name.isDirty && (name.minLength || name.isSame)) ? "profile__error_active" : " "}`} for="name">{name.message}</label> 
             </div>
             <div className="profile__row">
               <p className="profile__data">E-mail</p>
               <input 
-                className={`profile__input ${(email.isDirty && email.isEmail) ? "profile__input_incorrect" : " "}`}
+                className={`profile__input ${(email.isDirty && (email.isEmail || email.isSame)) ? "profile__input_incorrect" : " "}`}
                 ref={emailRef}
                 placeholder="Электронная почта"
                 name="email"
@@ -55,12 +55,12 @@ function Profile(props) {
                 onBlur={email.onBlur}
                 onChange={email.onChange}
               />
-              <label className={`profile__error ${(email.isDirty && email.isEmail) ? "profile__error_active" : " "}`} for="email">{email.message}</label>
+              <label className={`profile__error ${(email.isDirty && (email.isEmail || email.isSame)) ? "profile__error_active" : " "}`} for="email">{email.message}</label>
             </div> 
             <button 
-              className={`profile__save ${(email.isEmail || name.minLength) ? "profile__save_disabled" : " "}`}
+              className={`profile__save ${(email.isEmail || name.minLength || name.isSame || email.isSame ) ? "profile__save_disabled" : " "}`}
               type="submit"
-              disabled={(email.isEmail || name.minLength)}
+              disabled={(email.isEmail || name.minLength || name.isSame || email.isSame )}
             >Сохранить</button>
           </fieldset> 
         </form>

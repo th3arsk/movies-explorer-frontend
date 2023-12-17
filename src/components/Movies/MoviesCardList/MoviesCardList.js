@@ -1,6 +1,5 @@
 import './MoviesCardList.css';
 import React from 'react';
-import { useStore } from 'react-admin';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../../Preloader/Preloader';

@@ -1,28 +1,25 @@
 import './MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-
 import React from 'react';
-import Preloader from '../../Preloader/Preloader';
 
 import useFilter from '../../../utils/useFilter';
 import { useStore } from 'react-admin';
 
 function MoviesCardList() {
   const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
-  const [ preloader, setPreloader ] = React.useState(true);
   const [result, setResult] = useStore('result', '');
   const filteredMovies = useFilter(savedMovies, result)
+  const movieCount = filteredMovies.length;
   
   return (
     <ul className="movie-list">
-      {
+      { movieCount === 0 ?
+      <p>Ничего не найдено</p>
+       :
         filteredMovies.map((movie) => (
           <MoviesCard movie={movie} key={movie.movieId} />
         ))
       }
-      <div className={`movie-list__preloader ${ preloader ? "movie-list__preloader_visible" : ""}`}>
-        <Preloader />
-      </div>
     </ul>  
   );
 }

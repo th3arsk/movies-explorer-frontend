@@ -19,10 +19,18 @@ import Footer from '../Footer/Footer';
 import Error from '../Error/Error';
 
 function App() {
-  const [ currentUser, setCurrentUser ] = React.useState({ });
+  const [ currentUser, setCurrentUser ] = useStore("user", { });
   const [ loggedIn, setLoggedIn ] = React.useState(false);
   const navigate = useNavigate();
   const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
+
+  React.useEffect(()=> { 
+    getSavedMovies()
+      .then((res) => {
+        setSavedMovies(res);
+      })
+      .catch(err => console.log(`Ошибка.....: ${err}`))
+    }, [savedMovies])
 
   React.useEffect(() => {  
     if (localStorage.getItem('jwt')) {
@@ -38,6 +46,12 @@ function App() {
     }
   }, []);
 
+  React.useEffect(()=>{
+    getSavedMovies()
+    .then((res)=>{setSavedMovies(res)})
+    .catch(err => console.log(`Ошибка.....: ${err}`));
+  }, [])
+
   React.useEffect(() => { 
     getUserInfo()
      .then((res) => {
@@ -45,14 +59,6 @@ function App() {
       })
       .catch(err => console.log(`Ошибка.....: ${err}`));
     }, [ loggedIn === true ]);
-
-  React.useEffect(()=>{ 
-    getSavedMovies()
-      .then((res) => {
-        setSavedMovies(res);
-      })
-      .catch(err => console.log(`Ошибка.....: ${err}`))
-    }, [savedMovies])
 
   function login( email, password ) {
     signIn( email, password ) 

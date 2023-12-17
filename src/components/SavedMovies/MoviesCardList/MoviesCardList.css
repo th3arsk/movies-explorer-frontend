@@ -9,11 +9,10 @@
   column-gap: 30px;
   padding: 70px 0 0 0;
   border-top: 1px #E8E8E8 solid;
-  min-height: 540px;
   width: calc(100% - 128px);
-  justify-content: flex-start;
+  justify-content: center;
   list-style: none;
-  justify-content: flex-start;
+  min-height: 200px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -28,7 +27,6 @@
     padding: 70px 0 0 0;
     row-gap: 47px;
     margin: 120px auto 0;
-    min-height: 700px;
     justify-content: center;
   }
 }
@@ -39,6 +37,5 @@
     padding: 50px 0 0;
     row-gap: 39px;
     margin: 110px auto 150px;
-    min-height: max-content;
   }
 }
