@@ -24,6 +24,7 @@ export function getMovies() {
     'Content-Type': 'application/json'
     }
   })
+  .then((res) => getJson(res))
 }
 
 export function getSavedMovies() {
@@ -31,6 +32,7 @@ export function getSavedMovies() {
   method: 'GET',
   headers: getHeader()
   })
+  .then((res) => getJson(res))
 }
 
 export function saveMovie(movie) {
@@ -51,7 +53,7 @@ export function saveMovie(movie) {
     "movieId": movie.id
   })
 }) 
-.then(res => console.log(res));
+.then((res) => getJson(res))
 }
 
 export function deleteMovie(id) {

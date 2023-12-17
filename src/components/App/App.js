@@ -5,7 +5,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../../contexts/ProtectedRoute';
 import { signIn, signUp, checkToken, getUserInfo, editUserInfo } from '../../utils/MainApi';
-import { getSavedMovies, getJson } from '../../utils/MoviesApi'
+import { getSavedMovies } from '../../utils/MoviesApi'
 
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -23,37 +23,46 @@ function App() {
   const [ currentUser, setCurrentUser ] = React.useState({ });
   const [ loggedIn, setLoggedIn ] = React.useState(false);
   const navigate = useNavigate();
-
   const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
-  const [ preloader, setPreloader ] = React.useState(true);
 
-  React.useEffect(() => { handleTokenCheck() }, []);
-
-  React.useEffect(() => {
-    getUserInfo()
+  React.useEffect(() => {  
+    if (localStorage.getItem('jwt')) {
+      checkToken()
       .then((res) => {
+        if (res) {
+          setLoggedIn(true)
+        } else {
+          navigate("/signin")
+        }
+      })
+      .catch(err => console.log(`Ошибка.....: ${err}`));
+    }
+  }, []);
+
+  React.useEffect(() => { 
+    getUserInfo()
+     .then((res) => {
         setCurrentUser(res);
       })
       .catch(err => console.log(`Ошибка.....: ${err}`));
-    }, 
-  );
+    }, [ loggedIn === true ]);
 
-  React.useEffect(()=>{
+  React.useEffect(()=>{ 
     getSavedMovies()
-      .then(setPreloader(true))
-      .then((res) => getJson(res))
       .then((res) => {
         setSavedMovies(res);
       })
       .catch(err => console.log(`Ошибка.....: ${err}`))
-      .finally(setPreloader(false))
-  })
+    }, [])
 
-  function auth(name, email, password) {
-    signUp(name, email, password )
+  function login( email, password ) {
+    signIn( email, password ) 
     .then((res) => {
-       if (res) {  
-        navigate("/signin") 
+      if (res.token) {
+        localStorage.setItem("result", "")
+        localStorage.setItem("checkbox", false)
+        setLoggedIn(true)
+        navigate("/movies")
       } else {
         Promise.reject(`Ошибка: ${res.status}`)
       }
@@ -61,27 +70,14 @@ function App() {
     .catch(err => console.log(`Ошибка.....: ${err}`));
   }
 
-  function handleTokenCheck() {
-    if (localStorage.getItem('jwt')) {
-      checkToken()
-      .then((res) => {
-        if (res) {
-          setLoggedIn(true)
-          navigate("/movies")
-        } else {
-          navigate("/signin")
-        }
-      })
-      .catch(err => console.log(`Ошибка.....: ${err}`));;
-    }
-  }
-
-  function login( email, password ) {
-    console.log( email, password )
-    signIn( email, password ) 
-    .then(() => {
-      navigate("/movies")
-      setLoggedIn(true)
+  function auth(name, email, password) {
+    signUp(name, email, password )
+    .then((res) => {
+      if (res.name) {  
+        login( email, password )
+      } else {
+        Promise.reject(`Ошибка: ${res.status}`)
+      }
     })
     .catch(err => console.log(`Ошибка.....: ${err}`));
   }
@@ -90,13 +86,14 @@ function App() {
     setLoggedIn(false);
     window.location.reload();
     localStorage.removeItem('jwt');
+    localStorage.removeItem("result");
   }
 
   function edit( name, email ) {
     editUserInfo(name, email)
-    .then(res => {
+    .then((res) => {
       setCurrentUser(res);
-      console.log(res);
+      alert("Сохранено");
     })
     .catch(err => console.log(`Ошибка.....: ${err}`));
   }
@@ -162,10 +159,10 @@ function App() {
                   mainOpened={false}
                 />
                 <Profile 
-                  name={currentUser.name} 
-                  email={currentUser.email}
                   onExit={logout}
                   onEdit={edit}
+                  email={currentUser.email}
+                  name={currentUser.name}
                 />
               </>
             }/>  

@@ -20,13 +20,7 @@ export function signUp(name, email, password) {
       "password": password
     })
   })
-  .then((res) => {
-    if (res.ok) {
-      return res.json()
-    } else {
-      return Promise.reject(`Ошибка: ${res.status}`)
-    }
-  })
+  .then((res) => getJson(res))
 }
 
 export function signIn( email, password ) {
@@ -41,7 +35,7 @@ export function signIn( email, password ) {
       "email": email
     })
   })
-  .then(((res) => res.json()))
+  .then(((res) => getJson(res)))
   .then((res) => {
     localStorage.setItem('jwt', res.token);
     return res

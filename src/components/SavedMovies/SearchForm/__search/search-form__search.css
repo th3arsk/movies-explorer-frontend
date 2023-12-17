@@ -1,0 +1,11 @@
+.search-form__search {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  border: none;
+  background-color: transparent;
+  }
+
+.search-form__search:hover {
+  opacity: .8;
+}

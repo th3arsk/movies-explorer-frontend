@@ -1,8 +1,8 @@
 import { useStore } from 'react-admin';
 
-function useFilter(movies) {
+function useFilter(movies, result) {
   const [isShort, setShort] = useStore('short-film', false);
-  const [result, setResult] = useStore('result', '');
+ // const [result, setResult] = useStore('result', '');
 
   const filterByShorts = (movies) => {
     const filteredMovies = movies.filter((m) => m.duration <= 40);

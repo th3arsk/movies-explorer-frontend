@@ -1,7 +1,7 @@
 import './MoviesCard.css';
 import React from 'react';
 import { useStore } from 'react-admin';
-import { deleteMovie } from '../../../utils/MoviesApi';
+import { deleteMovie, saveMovie } from '../../../utils/MoviesApi';
 
 function MoviesCard(props) {
   const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
@@ -9,27 +9,22 @@ function MoviesCard(props) {
   const minutes = props.movie.duration % 60;
   const url = `https://api.nomoreparties.co` + props.movie.image.url;
 
-  const sameMovie = savedMovies.find((movie) => movie.movieId === props.movie.id)
+  const findedMovie = savedMovies.find((movie) => movie.movieId === props.movie.id)
 
   function handleSave() {
-    props.onSave(props.movie)
-    .then(res => setSavedMovies(res))
+    saveMovie(props.movie)
     .catch(err => console.log(`Ошибка.....: ${err}`)) 
-
-    console.log(savedMovies)
   }
   
-
-  function handleDelete() {
-    const id = sameMovie._id;
-
+  function handleDelete() { 
+    const id = findedMovie._id
     deleteMovie(id)
     .catch(err => console.log(`Ошибка.....: ${err}`))
   }
  
   return (
     <li className="movie-card">{
-        sameMovie ? 
+        findedMovie ? 
         <button className="movie-card__saved-logo" onClick={handleDelete}>
           <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="21" height="21" rx="10.5" fill="#FF4062"/>

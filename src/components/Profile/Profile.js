@@ -12,16 +12,16 @@ function Profile(props) {
     e.preventDefault();
   
     const user = {
-      name: nameRef.current.value === "" ? props.name : nameRef.current.value ,
-      email: emailRef.current.value === "" ? props.email : emailRef.current.value
+      name: nameRef.current.value,
+      email: emailRef.current.value
     }
     
     setEdit(false);
     props.onEdit(user.name, user.email)
   }
 
-  const name = useInput( "", { minLength: 2 } );
-  const email = useInput( "", { isEmail: true } );
+  const name = useInput( props.name, { minLength: 2 } );
+  const email = useInput( props.email, { isEmail: true } );
 
   return (
     <main className="profile">
@@ -34,7 +34,7 @@ function Profile(props) {
               <input 
                 className={`profile__input ${(name.isDirty && name.minLength) ? "profile__input_incorrect" : " "}`}
                 ref={nameRef}
-                placeholder={props.name}
+                placeholder="Имя"
                 name="name"
                 type="text"
                 value={name.value}
@@ -48,7 +48,7 @@ function Profile(props) {
               <input 
                 className={`profile__input ${(email.isDirty && email.isEmail) ? "profile__input_incorrect" : " "}`}
                 ref={emailRef}
-                placeholder={props.email}
+                placeholder="Электронная почта"
                 name="email"
                 type="email"
                 value={email.value}
@@ -58,9 +58,9 @@ function Profile(props) {
               <label className={`profile__error ${(email.isDirty && email.isEmail) ? "profile__error_active" : " "}`} for="email">{email.message}</label>
             </div> 
             <button 
-              className={`profile__save ${(false) ? "profile__save_disabled" : " "}`}
+              className={`profile__save ${(email.isEmail || name.minLength) ? "profile__save_disabled" : " "}`}
               type="submit"
-              disabled={(false)}
+              disabled={(email.isEmail || name.minLength)}
             >Сохранить</button>
           </fieldset> 
         </form>

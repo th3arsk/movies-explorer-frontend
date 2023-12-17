@@ -1,4 +1,5 @@
 import React from "react";
+import validator from "validator";
 
 function useValidation(value, validations) {
     const [ isEmpty, setEmpty ] = React.useState(true);
@@ -22,14 +23,12 @@ function useValidation(value, validations) {
             break
           case 'isEmail':
             if (value) {
-              const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-              regex.test(String(value).toLocaleLowerCase()) ? setEmail(false) : setEmail(true) 
-              !regex.test(String(value).toLocaleLowerCase()) ? setMessage("Введите адресс электронной почты") : setMessage("")
+              validator.isEmail(value) ? setEmail(false) : setEmail(true) 
+              !validator.isEmail(value) ? setMessage("Введите адресс электронной почты") : setMessage("")
             } 
             break
         } 
       }
-
     }, [value]);
 
     React.useEffect(()=>{
