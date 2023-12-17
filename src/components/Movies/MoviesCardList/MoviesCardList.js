@@ -1,5 +1,6 @@
 import './MoviesCardList.css';
 import React from 'react';
+import { useStore } from 'react-admin';
 
 import MoviesCard from '../MoviesCard/MoviesCard';
 import Preloader from '../../Preloader/Preloader';
@@ -18,12 +19,12 @@ function MoviesCardList() {
   const moviesCount = filteredMovies.length;
 
   React.useEffect(()=>{
+    setLoading(true)
     getMovies()
-      .then(setLoading(true))
       .then((res) => {setMovies(res)})
       .catch(err => console.log(`Ошибка.....: ${err}`))
-      .finally(setLoading(false))
-    }, [movies])
+      .finally(() => {setLoading(false)})
+    }, [])
 
   React.useEffect(()=>{
     checkWindowWidth();
@@ -32,10 +33,10 @@ function MoviesCardList() {
   const checkWindowWidth = () => {
     const screenWidth = window.screen.width;
 
-    if (screenWidth >= 1280) {
+    if (screenWidth > 1000) {
       setDisplayCount(12);
       setAddCount(3);
-    } else if (screenWidth <= 1000) {
+    } else if (1000 < screenWidth < 800) {
       setDisplayCount(8);
       setAddCount(2);
     } else {

@@ -1,5 +1,6 @@
 import './App.css'
 import React from 'react';
+import { useStore } from 'react-admin';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -16,8 +17,6 @@ import Profile from '../Profile/Profile';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Error from '../Error/Error';
-
-import { useStore } from 'react-admin';
 
 function App() {
   const [ currentUser, setCurrentUser ] = React.useState({ });
@@ -53,7 +52,7 @@ function App() {
         setSavedMovies(res);
       })
       .catch(err => console.log(`Ошибка.....: ${err}`))
-    }, [])
+    }, [savedMovies])
 
   function login( email, password ) {
     signIn( email, password ) 
