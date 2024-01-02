@@ -4,7 +4,6 @@ import { useStore } from 'react-admin';
 
 function SearchForm() {
   const [isShort, setShort] = useStore('short-film', false);
-  //const [result, setResult] = useStore('result', '');
   const result = localStorage.getItem("result")
 
   const resultRef = React.useRef();
@@ -15,7 +14,7 @@ function SearchForm() {
   
   React.useEffect(() => {
     resultRef.current.value = result;
-  }, [])
+  }, [result])
   
   function coverResult(e) {
     e.preventDefault();

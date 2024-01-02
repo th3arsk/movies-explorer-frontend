@@ -2,11 +2,11 @@ import './SavedMovies.css';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import SearchForm from './SearchForm/SearchForm'
 
-function SavedMovies() {
+function SavedMovies(props) {
   return (
     <main className="saved-movies">
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList movies={props.movies} />
     </main>
   );
 }

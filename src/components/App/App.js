@@ -1,12 +1,12 @@
 import './App.css'
 import React from 'react';
-import { useStore } from 'react-admin';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../../contexts/ProtectedRoute';
 import { signIn, signUp, checkToken, getUserInfo, editUserInfo } from '../../utils/MainApi';
-import { getSavedMovies } from '../../utils/MoviesApi'
+import { getSavedMovies, getMovies } from '../../utils/MoviesApi';
+import useFilter from '../../utils/useFilter';
 
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -19,10 +19,16 @@ import Footer from '../Footer/Footer';
 import Error from '../Error/Error';
 
 function App() {
-  const [ currentUser, setCurrentUser ] = useStore("user", { });
+  const [ currentUser, setCurrentUser ] = React.useState({ });
   const [ loggedIn, setLoggedIn ] = React.useState(false);
+  const [ savedMovies, setSavedMovies ] = React.useState([]);
+  const [ movies, setMovies ] =  React.useState([]);
+  const [ isLoading, setLoading ] = React.useState(false);
+  const [ displayCount, setDisplayCount ] = React.useState(12);
+  const [ addCount, setAddCount ] = React.useState(3);
+  const result = localStorage.getItem("result")
+  const filteredMovies = useFilter(movies, result);
   const navigate = useNavigate();
-  const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
 
   React.useEffect(()=> { 
     getSavedMovies()
@@ -31,6 +37,33 @@ function App() {
       })
       .catch(err => console.log(`Ошибка.....: ${err}`))
     }, [savedMovies])
+
+  React.useEffect(()=>{
+    setLoading(true)
+    getMovies()
+      .then((res) => {setMovies(res)})
+      .catch(err => console.log(`Ошибка.....: ${err}`))
+      .finally(() => {setLoading(false)})
+    }, [])
+
+  React.useEffect(() => {
+    const screenWidth = window.screen.width;
+
+    if (screenWidth > 1000) {
+      setDisplayCount(12);
+      setAddCount(3);
+    } else if (1000 < screenWidth < 800) {
+      setDisplayCount(8);
+      setAddCount(2);
+    } else {
+      setDisplayCount(5);
+      setAddCount(1);
+    }
+  }, [])
+  
+  function handleMore() {
+    setDisplayCount(displayCount + addCount);
+  }
 
   React.useEffect(() => {  
     if (localStorage.getItem('jwt')) {
@@ -45,12 +78,6 @@ function App() {
       .catch(err => console.log(`Ошибка.....: ${err}`));
     }
   }, []);
-
-  React.useEffect(()=>{
-    getSavedMovies()
-    .then((res)=>{setSavedMovies(res)})
-    .catch(err => console.log(`Ошибка.....: ${err}`));
-  }, [])
 
   React.useEffect(() => { 
     getUserInfo()
@@ -133,7 +160,12 @@ function App() {
                   savedMoviesOpened={false} 
                   mainOpened={false}
                 />
-                <Movies />
+                <Movies
+                  movies={filteredMovies}
+                  isLoading={isLoading}
+                  count={displayCount}
+                  onMore={handleMore}
+                />
                 <Footer />     
               </>
             }/>  
@@ -148,7 +180,9 @@ function App() {
                   savedMoviesOpened={true} 
                   mainOpened={false}
                 />
-                <SavedMovies />
+                <SavedMovies
+                  movies={savedMovies}
+                />
                 <Footer />     
               </>
             }/>  
