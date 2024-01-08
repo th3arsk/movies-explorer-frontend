@@ -1,0 +1,10 @@
+@import url(__logo/promo__logo.css);
+@import url(__title/promo__title.css);
+@import url(./__container/promo__container.css);
+
+.promo {
+  width: 100%;
+  background-color: #F3C1F8;
+  display: flex;
+}
+

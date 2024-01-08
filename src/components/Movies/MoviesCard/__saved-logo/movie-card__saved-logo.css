@@ -1,0 +1,19 @@
+.movie-card__saved-logo {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: none;
+  background-color: transparent;
+  transition: .1s ease-in;
+}
+
+.movie-card__saved-logo:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 600px) {
+  .movie-card__saved-logo  {
+    top: 10px;
+    right: 10px;
+  }
+}

@@ -1,0 +1,9 @@
+.login__span {
+  color: black;
+  transition: .1s ease-in;
+  text-decoration: none;
+}
+
+.login__span:hover {
+  opacity: .7;
+}

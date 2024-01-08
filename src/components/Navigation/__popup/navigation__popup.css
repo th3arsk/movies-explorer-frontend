@@ -1,0 +1,18 @@
+.navigation__popup {
+  position: fixed;
+  background-color: white;
+  top: 0;
+  right: 0;
+  width: 67.7%;
+  height: 100vh;
+  display: none;
+  z-index: 3;
+}
+
+@media screen and (max-width: 600px) {
+  .navigation__popup {
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+}

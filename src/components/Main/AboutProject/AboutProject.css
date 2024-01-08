@@ -1,0 +1,31 @@
+@import url(./__title/about-project__title.css);
+@import url(./__info/about-project__info.css);
+@import url(./__column/about-project__column.css);
+@import url(./__subtitle/about-project__subtitle.css);
+@import url(./__paragraph/about-project__paragraph.css);
+@import url(./__caption/about-project__caption.css);
+@import url(./__schema/about-project__schema.css);
+@import url(./__schema-backend/about-project__schema-backend.css);
+@import url(./__schema-frontend/about-project__schema-frontend.css);
+@import url(./__backend-week/about-project__backend-week.css);
+@import url(./__frontend-week/about-project__frontend-week.css);
+
+.about-project {
+  margin: 0 auto 110px;
+  width: calc(100% - 140px);
+  display: grid;
+}
+
+@media screen and (max-width: 900px) {
+  .about-project {
+    width: calc(100% - 100px);
+    margin: 0 auto 90px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-project {
+    width: calc(100% - 36px);
+    margin: 0 auto 69px;
+  }
+}

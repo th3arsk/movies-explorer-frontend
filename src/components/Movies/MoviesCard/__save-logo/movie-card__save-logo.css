@@ -1,0 +1,14 @@
+.movie-card__save-logo {
+  display: none; 
+  transition: .1s ease-in;
+}
+
+.movie-card__save-logo:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 900px) {
+  .movie-card__save-logo  {
+    display: block;
+  }
+}

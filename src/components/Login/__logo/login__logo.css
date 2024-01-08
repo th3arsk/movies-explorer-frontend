@@ -1,0 +1,14 @@
+.login__logo {
+  text-decoration: none;
+  transition: .15s ease-in;
+}
+
+.login__logo:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 600px) {
+  .login__logo {
+    margin: 0 auto;
+  }
+}

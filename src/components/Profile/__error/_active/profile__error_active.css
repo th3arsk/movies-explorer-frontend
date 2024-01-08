@@ -1,0 +1,5 @@
+.profile__error_active {
+  display: block;
+  position: absolute;
+  color: red;
+}

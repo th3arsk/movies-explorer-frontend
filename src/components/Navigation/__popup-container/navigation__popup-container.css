@@ -1,0 +1,11 @@
+.navigation__popup-container {
+  display: none;
+  z-index: 4;
+}
+
+@media screen and (max-width: 800px) {
+  .navigation__popup-container {
+    display: block;
+  }
+}
+
