@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.th3arsk.diploma.nomoredomainsmonster.ru"
+import { BASE_URL } from "./constants";
    
 const getJson = (res) => {
   if (res.ok) {

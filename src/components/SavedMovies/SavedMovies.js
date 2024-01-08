@@ -6,7 +6,7 @@ function SavedMovies(props) {
   return (
     <main className="saved-movies">
       <SearchForm />
-      <MoviesCardList movies={props.movies} />
+      <MoviesCardList movies={props.movies || []} />
     </main>
   );
 }

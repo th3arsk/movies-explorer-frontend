@@ -1,26 +1,26 @@
-import { useStore } from 'react-admin';
+import { SHORT_DURATION } from './constants';
 
-function useFilter(movies, result) {
-  const [isShort, setShort] = useStore('short-film', false);
- // const [result, setResult] = useStore('result', '');
-
+function useFilter(movies, result, checkbox, isLoggedIn) {
   const filterByShorts = (movies) => {
-    const filteredMovies = movies.filter((m) => m.duration <= 40);
-    return filteredMovies
-   }
+    if( isLoggedIn ) {
+      const filteredMovies = movies.filter((m) => m.duration <= SHORT_DURATION);
+      return filteredMovies
+    }
+  }
 
   const filterByName = (movies) => {
-    const filteredMovies = movies.filter((m) =>
-       m.nameRU.toLowerCase().includes(result.toLowerCase()) || m.nameEN.toLowerCase().includes(result.toLowerCase())
-    );
-
-    return filteredMovies
+    if( isLoggedIn ) {
+      const filteredMovies = movies.filter((m) =>
+      m.nameRU.toLowerCase().includes(result.toLowerCase()) || m.nameEN.toLowerCase().includes(result.toLowerCase())
+      );
+      return filteredMovies
+    }
   }
 
   const filtered = filterByName(movies)
   const shortMovies = filterByShorts(filtered) 
 
-  if(isShort) {
+  if(checkbox === "true") {
     return shortMovies
   } else {
     return filtered

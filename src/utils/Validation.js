@@ -1,6 +1,5 @@
 import React from "react";
 import validator from "validator";
-import { useStore } from "react-admin";
 
 function useValidation(value, validations) {
     const [ isEmpty, setEmpty ] = React.useState(true);
@@ -8,7 +7,7 @@ function useValidation(value, validations) {
     const [ message, setMessage ] = React.useState("");
     const [ isEmail, setEmail ] = React.useState(false);
     const [ isValid, setValid ] = React.useState(false);
-    const [ currentUser, setCurrentUser ] = useStore("user", { });
+   // const [ currentUser, setCurrentUser ] = useStore("user", { });
     const [ isSame, setSame ] = React.useState(false);
 
     React.useEffect(() => {
@@ -32,8 +31,8 @@ function useValidation(value, validations) {
             break
           case 'isSame':
             if (value) {
-              value === currentUser.name || value === currentUser.email ? setSame(true) : setSame(false) 
-              value === currentUser.name || value === currentUser.email ? setMessage("Введите новые данные") : setMessage("")
+              //value === currentUser.name || value === currentUser.email ? setSame(true) : setSame(false) 
+             // value === currentUser.name || value === currentUser.email ? setMessage("Введите новые данные") : setMessage("")
             } 
             break
         } 
