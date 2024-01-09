@@ -1,18 +1,21 @@
 import './MoviesCard.css';
 import React from 'react';
-import { useStore } from 'react-admin';
-import { deleteMovie, saveMovie } from '../../../utils/MoviesApi';
+import { deleteMovie } from '../../../utils/MoviesApi';
 
 function MoviesCard(props) {
-  const [ savedMovies, setSavedMovies ] = useStore('saved-movies', []);
+  //const savedMovies = props.savedMovies;
   const hours = Math.floor(props.movie.duration / 60);
   const minutes = props.movie.duration % 60;
   const url = `https://api.nomoreparties.co` + props.movie.image.url;
-  const findedMovie = savedMovies.find((movie) => movie.movieId === props.movie.id)
+  //const [ findedMovie, setFindedMovie ] = React.useState({})
+  const findedMovie = props.savedMovies.find((movie) => movie.movieId === props.movie.id)
+
+  //React.useState(()=> {
+  //  setFindedMovie(savedMovies.find((movie) => movie.movieId === props.movie.id))
+  //})
 
   function handleSave() {
-    saveMovie(props.movie)
-    .catch(err => console.log(`Ошибка.....: ${err}`)) 
+    props.onSave(props.movie)
   }
   
   function handleDelete() {

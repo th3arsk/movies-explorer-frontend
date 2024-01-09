@@ -1,5 +1,4 @@
-const BASE_URL = "https://api.th3arsk.diploma.nomoredomainsmonster.ru" + "/movies";
-const Movies_URL = "https://api.nomoreparties.co/beatfilm-movies";
+import { BASE_URL, MOVIES_URL } from "./constants";
 
 export function getJson(res) {
   if (res.ok) {
@@ -17,7 +16,7 @@ const getHeader = () => {
 }
 
 export function getMovies() {
-  return fetch(Movies_URL, {
+  return fetch(MOVIES_URL, {
   method: 'GET',
   headers: {
     'Accept': 'application/json',
@@ -28,7 +27,7 @@ export function getMovies() {
 }
 
 export function getSavedMovies() {
-  return fetch(BASE_URL, {
+  return fetch(BASE_URL + "/movies", {
   method: 'GET',
   headers: getHeader()
   })
@@ -36,7 +35,7 @@ export function getSavedMovies() {
 }
 
 export function saveMovie(movie) {
-  return fetch(BASE_URL, {
+  return fetch(BASE_URL + "/movies", {
   method: 'POST',
   headers: getHeader(),
   body: JSON.stringify({ 
@@ -57,7 +56,7 @@ export function saveMovie(movie) {
 }
 
 export function deleteMovie(id) {
-  return fetch(BASE_URL + '/' + id, {
+  return fetch(BASE_URL + "/movies/" + id, {
     method: 'DELETE',
     headers: getHeader(),
   })

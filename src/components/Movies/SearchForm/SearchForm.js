@@ -1,25 +1,25 @@
 import './SearchForm.css';
 import React from 'react';
-import { useStore } from 'react-admin';
 
 function SearchForm() {
-  const [isShort, setShort] = useStore('short-film', false);
-  const result = localStorage.getItem("result")
+  const result = localStorage.getItem("moviesSearch")
+  const checkbox = localStorage.getItem("moviesCheckbox")
 
   const resultRef = React.useRef();
 
   function handleCheckbox() {
-    isShort ? setShort(false) : setShort(true);
+    (checkbox === "true") ? localStorage.setItem("moviesCheckbox", false) : localStorage.setItem("moviesCheckbox", true);
   }
-  
+
   React.useEffect(() => {
-    resultRef.current.value = result;
-  }, [result])
+    resultRef.current.value = result || "";
+  }, [])
   
   function coverResult(e) {
     e.preventDefault();
       
-    localStorage.setItem("result", resultRef.current.value)
+    localStorage.setItem("moviesSearch", resultRef.current.value )
+    console.log(localStorage.getItem("moviesSearch"))
   }
   
   return (
@@ -46,7 +46,7 @@ function SearchForm() {
       <div className="search-form__shorts">
         <button className="search-form__shorts-bttn" type="button" onClick={handleCheckbox} >
           {
-          isShort ?
+          ( checkbox === "true") ?
           <svg width="36" height="20" viewBox="0 0 36 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="3" width="34" height="14" rx="7" fill="#2BE080"/>
             <circle cx="28" cy="10" r="5" fill="white"/>

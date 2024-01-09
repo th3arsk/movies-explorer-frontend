@@ -29,14 +29,9 @@
   }
   .mk-spinner-ring{
     content:"";
-    display:inline-block;
-    position:absolute;
     width:50px;
     height:50px;
-    top:50%;
-    margin-top:-25px;
-    left:50%;
-    margin-left:-25px;
+    margin: 100px auto;
     z-index:1;
     border-radius:50%;
     border:3px solid #00bcd4;
