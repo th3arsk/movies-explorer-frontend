@@ -1,5 +1,5 @@
-const LARGE_WIDTH = 1000;
-const MEDIUM_WIDTH = 800;
+const LARGE_WIDTH = 1077;
+const MEDIUM_WIDTH = 708;
 
 const SHORT_DURATION = 40;
 

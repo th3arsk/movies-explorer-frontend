@@ -1,6 +1,7 @@
 import { SHORT_DURATION } from './constants';
 
-function useFilter(movies, result, checkbox) {
+function useFilter(movies, res, checkbox) {
+  const result = res || ""
 
   const filterByShorts = (movies) => {
     const filteredMovies = movies.filter((m) => m.duration <= SHORT_DURATION);

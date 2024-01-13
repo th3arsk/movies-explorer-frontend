@@ -42,20 +42,6 @@ export function signIn( email, password ) {
   })
 }
 
-export function checkToken() {
-  const token = localStorage.getItem('jwt');
-  
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    }
-  })
-  .then((res) => getJson(res))
-}
-
 const getHeader = () => {
   const token = localStorage.getItem('jwt');
   return {

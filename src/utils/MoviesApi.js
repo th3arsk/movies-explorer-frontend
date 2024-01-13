@@ -50,9 +50,9 @@ export function saveMovie(movie) {
     "trailerLink": movie.trailerLink,
     "thumbnail": `https://api.nomoreparties.co${movie.image.previewUrl}`,
     "movieId": movie.id
-  })
-}) 
-.then((res) => getJson(res))
+    })
+  }) 
+  .then((res) => getJson(res))
 }
 
 export function deleteMovie(id) {

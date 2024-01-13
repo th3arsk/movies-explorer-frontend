@@ -11,9 +11,6 @@ function Movies(props) {
       <MoviesCardList 
         movies={props.movies}
         savedMovies={props.savedMovies}
-        count={props.count}
-        onMore={props.onMore}
-        onSave={props.onSave}
       />} 
     </main>
   );

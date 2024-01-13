@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import validator from "validator";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function useValidation(value, validations) {
     const [ isEmpty, setEmpty ] = React.useState(true);
@@ -7,9 +8,9 @@ function useValidation(value, validations) {
     const [ message, setMessage ] = React.useState("");
     const [ isEmail, setEmail ] = React.useState(false);
     const [ isValid, setValid ] = React.useState(false);
-   // const [ currentUser, setCurrentUser ] = useStore("user", { });
-  //  const [ isSame, setSame ] = React.useState(false);
-
+    const [ isSame, setSame ] = React.useState(false);
+    const currentUser = useContext(CurrentUserContext);
+    
     React.useEffect(() => {
       for( const validation in validations ) {
         switch( validation ) {
@@ -29,12 +30,12 @@ function useValidation(value, validations) {
               !validator.isEmail(value) ? setMessage("Введите адресс электронной почты") : setMessage("")
             } 
             break
-         // case 'isSame':
-          //  if (value) {
-              //value === currentUser.name || value === currentUser.email ? setSame(true) : setSame(false) 
-             // value === currentUser.name || value === currentUser.email ? setMessage("Введите новые данные") : setMessage("")
-          //  } 
-         //   break
+          case 'isSame':
+            if (value) {
+              value === currentUser.name || value === currentUser.email ? setSame(true) : setSame(false) 
+              value === currentUser.name || value === currentUser.email ? setMessage("Введите новые данные") : setMessage("")
+            } 
+            break
         } 
       }
     }, [value]);
@@ -51,7 +52,7 @@ function useValidation(value, validations) {
       isEmpty,
       minLength,
       isEmail,
-    //  isSame,
+      isSame,
       message,
       isValid
     }

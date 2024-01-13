@@ -2,8 +2,46 @@ import './MoviesCardList.css';
 import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
+import {  
+  LARGE_WIDTH,
+  MEDIUM_WIDTH,
+  CARD_COUNT_MAX,
+  CARD_COUNT_MEDIUM,
+  CARD_COUNT_MIN,
+  ADDED_COUNT_MAX,
+  ADDED_COUNT_MEDIUM,
+  ADDED_COUNT_MIN, } from '../../../utils/constants';
+
 function MoviesCardList(props) {
   const moviesCount = props.movies.length;
+
+  const [ displayCount, setDisplayCount ] = React.useState(CARD_COUNT_MAX);
+  const [ addCount, setAddCount ] = React.useState(ADDED_COUNT_MAX);
+  const [ width, setWidth ] = React.useState(window.innerWidth)
+
+  setTimeout(()=>{
+    window.addEventListener('resize', setWidth(window.innerWidth))
+  }, 1000)
+
+  React.useEffect(()=>{
+    if ( width >= LARGE_WIDTH ) {
+      setDisplayCount(CARD_COUNT_MAX)
+      setAddCount(ADDED_COUNT_MAX)
+     
+    } else if ( width >= MEDIUM_WIDTH ) {
+      setDisplayCount(CARD_COUNT_MEDIUM)
+      setAddCount(ADDED_COUNT_MEDIUM)
+    
+    } else {
+      setDisplayCount(CARD_COUNT_MIN)
+      setAddCount(ADDED_COUNT_MIN)
+    
+    }
+  }, [width])
+
+  const handleMore = () => {
+    setDisplayCount(displayCount + addCount)
+  }
 
   return (
     <section className="movies__container">
@@ -12,17 +50,16 @@ function MoviesCardList(props) {
         ( moviesCount === 0 ) ? 
         <p>Ничего не найдено</p>
         :
-        props.movies.slice(0, props.count).map((movie) => (
+        props.movies.slice(0, displayCount).map((movie) => (
           <MoviesCard
             movie={movie}
             savedMovies={props.savedMovies}
-            onSave={props.onSave}
             key={movie.id} 
           />
         ))  
       }
       </ul> 
-      {(props.count >= moviesCount ) ? "" : <button className="movies__more" onClick={props.onMore}>Ещё</button>}
+      {(displayCount >= moviesCount ) ? "" : <button className="movies__more" onClick={handleMore}>Ещё</button>}
     </section> 
   );
 }

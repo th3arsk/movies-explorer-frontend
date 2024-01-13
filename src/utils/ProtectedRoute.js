@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = (props) => {
   return (
-    true ? props.element : <Navigate to="/" replace/>
+   props.token ? props.element : <Navigate to="/" />
 )};
 
 export default ProtectedRoute;

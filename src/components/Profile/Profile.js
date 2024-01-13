@@ -1,9 +1,11 @@
 import './Profile.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useInput } from '../../utils/Validation';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function Profile(props) {
   const [ edit, setEdit ] = React.useState(false);
+  const currentUser = useContext(CurrentUserContext)
 
   const nameRef = React.useRef();
   const emailRef = React.useRef();
@@ -12,20 +14,20 @@ function Profile(props) {
     e.preventDefault();
   
     const user = {
-      name: nameRef.current.value,
-      email: emailRef.current.value
+      name: nameRef.current.value === "" ? currentUser.name : nameRef.current.value ,
+      email: emailRef.current.value === "" ? currentUser.email : emailRef.current.value
     }
     
     setEdit(false);
     props.onEdit(user.name, user.email)
   }
 
-  const name = useInput( props.name, { minLength: 2, isSame: true } );
-  const email = useInput( props.email, { isEmail: true, isSame: true } );
+  const name = useInput( currentUser.name, { minLength: 2, isSame: true } );
+  const email = useInput( currentUser.email, { isEmail: true, isSame: true } );
 
   return (
     <main className="profile">
-      <h1 className="profile__greeting">{`Привет, ${props.name}!`}</h1>
+      <h1 className="profile__greeting">{`Привет, ${currentUser.name}!`}</h1>
       { edit ?
         <form className="profile__info" onSubmit={handleSubmit}>
           <fieldset className="profile__fieldset">
@@ -68,11 +70,11 @@ function Profile(props) {
         <div className="profile__info">
           <div className="profile__row profile__name">
             <p className="profile__data">Имя</p>
-            <p className="profile__data">{props.name}</p>
+            <p className="profile__data">{currentUser.name}</p>
           </div>
           <div className="profile__row">
             <p className="profile__data">E-mail</p>
-            <p className="profile__data">{props.email}</p>
+            <p className="profile__data">{currentUser.email}</p>
           </div>
         </div>
       }
