@@ -6,10 +6,11 @@
   text-align: left;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 700px) {
-  .search-form__shorts-title  {
+  .search-form__shorts-title {
     font-size: 11px;
   }
 }

@@ -1,17 +1,25 @@
-import './Movies.css';
-import SearchForm from './SearchForm/SearchForm';
-import MoviesCardList from './MoviesCardList/MoviesCardList';
-import Preloader from '../Preloader/Preloader';
+import "./Movies.css";
+import MoviesCardList from "./MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
 
 function Movies(props) {
   return (
     <main className="movies">
-      <SearchForm />
-      { props.isLoading ? <Preloader /> : 
-      <MoviesCardList 
+      <SearchForm
+        search={props.search}
+        setSearch={props.setSearch}
+        checkbox={props.checkbox}
+        setCheckbox={props.setCheckbox}
+        isSavedMovies={false}
+        isLoading={props.isLoading}
+      />
+
+      <MoviesCardList
+        onAddMovie={props.onAddMovie}
+        onRemoveMovie={props.onRemoveMovie}
         movies={props.movies}
         savedMovies={props.savedMovies}
-      />} 
+      />
     </main>
   );
 }
