@@ -5,9 +5,8 @@ function SearchForm(props) {
   const [query, setQuery] = React.useState(props.search || "");
 
   function handleCheckbox() {
-    props.isSavedMovies
-      ? localStorage.setItem("savedMoviesCheckbox", !props.checkbox)
-      : localStorage.setItem("moviesCheckbox", !props.checkbox);
+    !props.isSavedMovies &&
+      localStorage.setItem("moviesCheckbox", !props.checkbox);
     props.setCheckbox(!props.checkbox);
   }
   function handleChange(e) {
@@ -15,18 +14,14 @@ function SearchForm(props) {
   }
   function coverResult(e) {
     e.preventDefault();
-    props.isSavedMovies
-      ? localStorage.setItem("savedMoviesSearch", query)
-      : localStorage.setItem("moviesSearch", query);
+    !props.isSavedMovies && localStorage.setItem("moviesSearch", query);
     props.setSearch(query);
   }
 
   function resetForm() {
     setQuery("");
     props.setSearch("");
-    props.isSavedMovies
-      ? localStorage.setItem("savedMoviesSearch", "")
-      : localStorage.setItem("moviesSearch", "");
+    !props.isSavedMovies && localStorage.setItem("moviesSearch", "");
   }
 
   return (

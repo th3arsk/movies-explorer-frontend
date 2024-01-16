@@ -12,7 +12,6 @@ import {
   saveMovie,
   deleteMovie,
 } from "../../utils/MoviesApi";
-
 import filter from "../../utils/flter";
 
 import Main from "../Main/Main";
@@ -34,20 +33,14 @@ function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [movies, setMovies] = React.useState([]);
   const [isLoading, setLoading] = React.useState(false);
+  const [isLoadedAllMovies, setIsLoadedAllMovies] = React.useState(false);
   const [searchQueryAllMovies, setSearchQueryAllMovies] = React.useState(
     localStorage.getItem("moviesSearch") ?? ""
-  );
-  const [searchQuerySavedMovies, setSearchQuerySavedMovies] = React.useState(
-    localStorage.getItem("savedMoviesSearch") ?? ""
   );
   const [checkboxAllMovies, setCheckboxAllMovies] = React.useState(
     JSON.parse(localStorage.getItem("moviesCheckbox")) ?? false
   );
-  const [checkboxSavedMovies, setCheckboxSavedMovies] = React.useState(
-    JSON.parse(localStorage.getItem("savedMoviesCheckbox")) ?? false
-  );
   const [filteredMovies, setFilteredMovies] = React.useState([]);
-  const [filteredSavedMovies, setFilteredSavedMovies] = React.useState([]);
   const [textNotify, setTextNotify] = React.useState("");
   const [isOpenPopup, setIsOpenPopup] = React.useState(false);
 
@@ -59,6 +52,7 @@ function App() {
       getMovies()
         .then((res) => {
           setMovies(res);
+          setIsLoadedAllMovies(true);
           localStorage.setItem("movies", JSON.stringify(res));
         })
         .catch((err) => console.log(`Ошибка.....: ${err}`))
@@ -73,16 +67,6 @@ function App() {
     }
   }, [movies, searchQueryAllMovies, checkboxAllMovies]);
 
-  React.useEffect(() => {
-    if (savedMovies.length) {
-      const filtered = filter(
-        savedMovies,
-        searchQuerySavedMovies,
-        checkboxSavedMovies
-      );
-      setFilteredSavedMovies(filtered);
-    }
-  }, [savedMovies, searchQuerySavedMovies, checkboxSavedMovies]);
   const token = localStorage.getItem("jwt");
 
   React.useEffect(() => {
@@ -90,7 +74,6 @@ function App() {
     getSavedMovies()
       .then((res) => {
         setSavedMovies(res);
-        localStorage.setItem("savedMovies", JSON.stringify(res));
       })
       .catch(console.log)
       .finally(() => setLoading(false));
@@ -112,10 +95,6 @@ function App() {
     signIn(email, password)
       .then((res) => {
         if (res.token) {
-          localStorage.setItem("moviesSearch", "");
-          localStorage.setItem("savedMoviesSearch", "");
-          localStorage.setItem("moviesCheckbox", false);
-          localStorage.setItem("savedMoviesCheckbox", false);
           setLoggedIn(true);
           navigate("/movies", { replace: true });
         } else {
@@ -170,7 +149,6 @@ function App() {
     if (savedMovies.find((m) => m.movieId === movie.id)) {
       return;
     }
-    setLoading(true);
     saveMovie(movie)
       .then((newMovie) => {
         setSavedMovies([newMovie, ...savedMovies]);
@@ -178,24 +156,24 @@ function App() {
       .catch(() => {
         setTextNotify("Произошла ошибка при добавлении фильма");
         setIsOpenPopup(true);
-      })
-      .finally(() => setLoading(false));
+      });
   }
-
+  let isDeleting = false;
   function handleRemoveSavedMovie(movieId) {
-    setLoading(true);
-    deleteMovie(movieId)
-      .then((removedMovie) => {
-        const newSaveMovieList = savedMovies.filter(
-          (card) => card._id !== removedMovie._id
-        );
-        setSavedMovies(newSaveMovieList);
-      })
-      .catch(() => {
-        setTextNotify("Произошла ошибка при удалении фильма");
-        setIsOpenPopup(true);
-      })
-      .finally(() => setLoading(false));
+    if (!isDeleting) {
+      isDeleting = true;
+      deleteMovie(movieId)
+        .then((removedMovie) => {
+          const newSaveMovieList = savedMovies.filter(
+            (card) => card._id !== removedMovie._id
+          );
+          setSavedMovies(newSaveMovieList);
+        })
+        .catch(() => {
+          setTextNotify("Произошла ошибка при удалении фильма");
+          setIsOpenPopup(true);
+        });
+    }
   }
 
   return (
@@ -255,6 +233,7 @@ function App() {
                       setCheckbox={setCheckboxAllMovies}
                       onAddMovie={handleAddMovie}
                       onRemoveMovie={handleRemoveSavedMovie}
+                      isLoadedAllMovies={isLoadedAllMovies}
                     />
                     <Footer />
                   </>
@@ -278,11 +257,8 @@ function App() {
                     />
                     <SavedMovies
                       isLoading={isLoading}
-                      movies={filteredSavedMovies}
-                      search={searchQuerySavedMovies}
-                      setSearch={setSearchQuerySavedMovies}
-                      checkbox={checkboxSavedMovies}
-                      setCheckbox={setCheckboxSavedMovies}
+                      savedMovies={savedMovies}
+                      setSavedMovies={setSavedMovies}
                       onRemoveMovie={handleRemoveSavedMovie}
                     />
                     <Footer />

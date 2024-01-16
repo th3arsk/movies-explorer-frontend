@@ -19,6 +19,8 @@ function Movies(props) {
         onRemoveMovie={props.onRemoveMovie}
         movies={props.movies}
         savedMovies={props.savedMovies}
+        isLoadedAllMovies={props.isLoadedAllMovies}
+        search={props.search}
       />
     </main>
   );

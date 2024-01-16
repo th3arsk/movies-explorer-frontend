@@ -11,7 +11,7 @@ const CARD_COUNT_MIN = 5;
 const ADDED_COUNT_MAX = 4;
 const ADDED_COUNT_LARGE = 3;
 const ADDED_COUNT_MEDIUM = 2;
-const ADDED_COUNT_MIN = 1;
+const ADDED_COUNT_MIN = 2;
 
 const BASE_URL = "https://api.th3arsk.diploma.nomoredomainsmonster.ru";
 const MOVIES_URL = "https://api.nomoreparties.co/beatfilm-movies";

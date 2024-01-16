@@ -18,7 +18,7 @@ import {
 function MoviesCardList(props) {
   const moviesCount = props.movies.length;
 
-  const [displayCount, setDisplayCount] = React.useState(CARD_COUNT_MAX);
+  const [displayCount, setDisplayCount] = React.useState(0);
   const [addCount, setAddCount] = React.useState(ADDED_COUNT_MAX);
   const [width, setWidth] = React.useState(window.innerWidth);
 
@@ -40,31 +40,28 @@ function MoviesCardList(props) {
       setDisplayCount(CARD_COUNT_MIN);
       setAddCount(ADDED_COUNT_MIN);
     }
-  }, [width]);
+  }, [width, props.search]);
 
   const handleMore = () => {
-    console.log(addCount);
     setDisplayCount(displayCount + addCount);
   };
 
   return (
     <section className="movies__container">
       <ul className="movies__list">
-        {moviesCount === 0 ? (
-          <p>Ничего не найдено</p>
-        ) : (
-          props.movies
-            .slice(0, displayCount)
-            .map((movie) => (
-              <MoviesCard
-                movie={movie}
-                savedMovies={props.savedMovies}
-                key={movie.id}
-                onAddMovie={props.onAddMovie}
-                onRemoveMovie={props.onRemoveMovie}
-              />
-            ))
-        )}
+        {moviesCount === 0
+          ? props.isLoadedAllMovies && <p>Ничего не найдено</p>
+          : props.movies
+              .slice(0, displayCount)
+              .map((movie) => (
+                <MoviesCard
+                  movie={movie}
+                  savedMovies={props.savedMovies}
+                  key={movie.id}
+                  onAddMovie={props.onAddMovie}
+                  onRemoveMovie={props.onRemoveMovie}
+                />
+              ))}
       </ul>
       {displayCount >= moviesCount ? (
         ""
