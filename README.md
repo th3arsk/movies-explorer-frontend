@@ -2,6 +2,15 @@
 
 ![image](https://github.com/th3arsk/movies-explorer-frontend/assets/113641519/c2c43cd6-e217-40f5-aaaa-9aa61b9f1290)
 
+### О проекте
+
+Фронтенд проекта Movie Explorer. Movie Explorer - мой дипломный проект в Яндекс Практикуме. Помимо написания Бэк и Фронта для этого сайта, я так же опубликовал его на виртуальной машине и подключил домены. Функционал этого проекта - поиск фильмов и сохранение в избранные.
+https://th3arsk.diploma.nomoredomainsmonster.ru
+
+### Стек
+
+React, XML, Explress.js, Node.js, MongoDB, ООП, Адаптивная вёрстка, CSS3, HTML5.
+
 ### ip
 158.160.6.124
 
