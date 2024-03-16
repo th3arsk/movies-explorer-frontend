@@ -1,5 +1,7 @@
 # movie-explorer
 
+![image](https://github.com/th3arsk/movies-explorer-frontend/assets/113641519/c2c43cd6-e217-40f5-aaaa-9aa61b9f1290)
+
 ### ip
 158.160.6.124
 
