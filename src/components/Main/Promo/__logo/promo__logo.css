@@ -1,0 +1,19 @@
+.promo__logo {
+  z-index: 2;
+  position: absolute;
+  top: 82px;
+  width: 320px;
+}
+
+@media screen and (max-width: 900px) {
+  .promo__logo {
+    top: 224px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .promo__logo {
+    top: 142px;
+    width: 248px;
+  }
+} 

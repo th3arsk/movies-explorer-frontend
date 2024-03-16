@@ -1,0 +1,19 @@
+.search-form__search {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  border: none;
+  background-color: transparent;
+}
+
+.search-form__search:hover {
+  opacity: 0.8;
+}
+
+.search-form__reset {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  color: #959595;
+  cursor: pointer;
+}

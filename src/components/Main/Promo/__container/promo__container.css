@@ -1,0 +1,15 @@
+.promo__container {
+  display: flex;
+  margin: 0 auto 0;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  width: 730px;
+}
+
+@media screen and (max-width: 750px) {
+  .promo__container {
+    width: 300px;
+  }
+} 
+

@@ -1,0 +1,12 @@
+.header__sign-up {
+  text-align: right;
+  text-decoration: none;
+  transition: .1s ease-in;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+  
+.header__sign-up:hover {
+  opacity: .7;
+}

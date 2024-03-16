@@ -1,0 +1,9 @@
+@import url(./__back/error__back.css);
+@import url(./__message/error__message.css);
+@import url(./__number/error__number.css);
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

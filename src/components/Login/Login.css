@@ -1,0 +1,31 @@
+@import url(./__logo/login__logo.css);
+@import url(./__title/login__title.css);
+@import url(./__form/login__form.css);
+@import url(./__fieldset/login__fieldset.css);
+@import url(./__label/login__label.css);
+@import url(./__input/login__input.css);
+@import url(./__bttn/login__bttn.css);
+@import url(./__question/login__question.css);
+@import url(./__span/login__span.css);
+@import url(./__error/login__error.css);
+@import url(./__error/_active/login__error_active.css);
+@import url(./__input/_incorrect/login__input_incorrect.css);
+@import url(./__bttn/_disabled/login__bttn_disabled.css);
+
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 0;
+}
+
+@media screen and (max-width: 800px) {
+  .login {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login {
+    padding: 56px 0 30px;
+  }
+}
